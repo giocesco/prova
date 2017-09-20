@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<!--  Created with the CoffeeCup HTML Editor  -->
+<!--        http://www.coffeecup.com/         -->
+<!--       Brewed on 15/11/03 12:10:24        -->
+<head>
+  <title>Come generare una pagina HTML usando VBA</title>
+<meta http-equiv="content-Type" content="text/html; charset=iso-8859-15" />
+<meta name="robots" content="all" />
+<meta name="distribution" content="global" />
+<meta name="language" content="Italian" />
+<meta name="resource-type" content="document" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="imagetoolbar" content="false" />
+<style type="text/css">
+<!--
+body{
+    text-align: center;   /*centra in IE 5.x */
+    }
+
+div#container{
+    width: 760px;
+    margin: 0px auto;   /*centra negli altri browsers*/
+    text-align: left;   /*ripristina l' allineamento*/
+    }
+div#container p,ul,td{ font-family:Verdana, Arial; font-size: .8em;
+;}
+em {color:red;}
+a, a:visited {text-decoration:none; color:brown;font-size: .7em;}
+a:hover {text-decoration:underline;font-size: .7em;}
+h1,h2,h3 {font-family:Verdana, Arial; color:brown;}
+.immagine {
+float:right;
+}
+#container p {
+	color:#0000FF;
+	font-weight:bold;
+}	
+// -->
+</style>
+</head>
+<body>
+
+<div id="container">
+<table width="100%">
+<tr>
+<td valign="bottom">
+<h2>Catalogo </h2></td><td align="right" valign="bottom"><img src="../images/immagine_logo.jpg" alt="immagine di prova" width="182" height="85" /></td></tr>
+</table>
+<p>Elenco Articoli provenienti dal foglio2 di Excel</p>
+<table align="center" width="90%" border="1" cellspacing="0" cellpadding="0">
+<tr><td>Cod</td>
+<td>ARTICOLI</td>
+<td>prezzo</td>
+<td>iva</td>
+<td>q.tà</td>
+<td>tot</td>
+<td>iva</td>
+<td>tot ivato</td>
+</tr>
+<tr><td>1</td>
+<td>Chiodi</td>
+<td> &euro;   0,25 </td>
+<td>20%</td>
+<td>10</td>
+<td> &euro;     2,50 </td>
+<td> &euro;     0,50 </td>
+<td> &euro;       3,00 </td>
+</tr>
+<tr><td>2</td>
+<td>Trapano</td>
+<td> &euro; 38,00 </td>
+<td>20%</td>
+<td>15</td>
+<td> &euro; 570,00 </td>
+<td> &euro; 114,00 </td>
+<td> &euro;    684,00 </td>
+</tr>
+<tr><td>3</td>
+<td>avvitatore</td>
+<td> &euro; 28,20 </td>
+<td>20%</td>
+<td>5</td>
+<td> &euro; 141,00 </td>
+<td> &euro;   28,20 </td>
+<td> &euro;    169,20 </td>
+</tr>
+<tr><td>4</td>
+<td>Chiodi</td>
+<td> &euro;   0,50 </td>
+<td>20%</td>
+<td>10</td>
+<td> &euro;     5,00 </td>
+<td> &euro;     1,00 </td>
+<td> &euro;       6,00 </td>
+</tr>
+<tr><td>5</td>
+<td>Tasselli</td>
+<td> &euro;   0,25 </td>
+<td>20%</td>
+<td>30</td>
+<td> &euro;     7,50 </td>
+<td> &euro;     1,50 </td>
+<td> &euro;       9,00 </td>
+</tr>
+<tr><td>6</td>
+<td>Mola</td>
+<td> &euro; 38,50 </td>
+<td>20%</td>
+<td>25</td>
+<td> &euro; 962,50 </td>
+<td> &euro; 192,50 </td>
+<td> &euro; 1.155,00 </td>
+</tr>
+<tr><td>7</td>
+<td>Martello</td>
+<td> &euro;   3,04 </td>
+<td>20%</td>
+<td>25</td>
+<td> &euro;   76,00 </td>
+<td> &euro;   15,20 </td>
+<td> &euro;      91,20 </td>
+</tr>
+<tr><td>8</td>
+<td>Viti</td>
+<td> &euro;   3,50 </td>
+<td>20%</td>
+<td>80</td>
+<td> &euro; 280,00 </td>
+<td> &euro;   56,00 </td>
+<td> &euro;    336,00 </td>
+</tr>
+<tr><td>9</td>
+<td>punta trapano</td>
+<td> &euro;   1,00 </td>
+<td>20%</td>
+<td>10</td>
+<td> &euro;   10,00 </td>
+<td> &euro;     2,00 </td>
+<td> &euro;      12,00 </td>
+</tr>
+</table>
+<p>Elenco immagini provenienti dal foglio1 di Excel</p>
+<table align="center" width="90%" border="1" cellspacing="0" cellpadding="0">
+<tr><td>Immagine</td>
+<td>Didascalia</td>
+</tr>
+<tr><td>IMG_0003.JPG</td>
+<td>Fiore Viola</td>
+</tr>
+<tr><td>IMG_0004.JPG</td>
+<td>Rosa</td>
+</tr>
+<tr><td>IMG_0006.JPG</td>
+<td>Fiore Arancione</td>
+</tr>
+<tr><td>IMG_0007.JPG</td>
+<td>Campanula rosa</td>
+</tr>
+<tr><td>IMG_1456.JPG</td>
+<td>Fiorellini</td>
+</tr>
+<tr><td>IMG_1464.JPG</td>
+<td>Bocciolo di Geranio</td>
+</tr>
+<tr><td>IMG_1466.JPG</td>
+<td>Fiore Bianco</td>
+</tr>
+<tr><td>IMG_1469.JPG</td>
+<td>Fiore Viola</td>
+</tr>
+<tr><td>IMG_1534.JPG</td>
+<td>Wigelia</td>
+</tr>
+<tr><td>IMG_1537.JPG</td>
+<td>Portulacca</td>
+</tr>
+<tr><td>IMG_1538.JPG</td>
+<td>Portulacca 2</td>
+</tr>
+</table>
+<p>Archivio Clienti provenienti dal foglio3 di Excel</p>
+<table align="center" width="90%" border="1" cellspacing="0" cellpadding="0">
+<tr><td>ID</td>
+<td>Cognome</td>
+<td>Nome</td>
+<td>P. Iva</td>
+<td>Nome E Cognome</td>
+</tr>
+<tr><td>1</td>
+<td>Migliavacca</td>
+<td>Luigi</td>
+<td>39758885447</td>
+<td>Migliavacca Luigi</td>
+</tr>
+<tr><td>2</td>
+<td>Rizzi</td>
+<td>Carlo</td>
+<td>63412085762</td>
+<td>Rizzi Carlo</td>
+</tr>
+<tr><td>3</td>
+<td>Liberali</td>
+<td>Franca</td>
+<td>84358933607</td>
+<td>Liberali Franca</td>
+</tr>
+<tr><td>4</td>
+<td>Di Maggio</td>
+<td>Mario</td>
+<td>46135462107</td>
+<td>Di Maggio Mario</td>
+</tr>
+<tr><td>5</td>
+<td>Scicchitano</td>
+<td>Andrea</td>
+<td>38577046928</td>
+<td>Scicchitano Andrea</td>
+</tr>
+<tr><td>6</td>
+<td>Maggi</td>
+<td>Massimo</td>
+<td>64974410522</td>
+<td>Maggi Massimo</td>
+</tr>
+<tr><td>7</td>
+<td>Edelvisi</td>
+<td>Maurizio</td>
+<td>23227159739</td>
+<td>Edelvisi Maurizio</td>
+</tr>
+<tr><td>8</td>
+<td>Gerardini</td>
+<td>Silvano</td>
+<td>63116541155</td>
+<td>Gerardini Silvano</td>
+</tr>
+<tr><td>9</td>
+<td>Pasotti</td>
+<td>Alessio</td>
+<td>90178260521</td>
+<td>Pasotti Alessio</td>
+</tr>
+<tr><td>10</td>
+<td>Calvi</td>
+<td>Giovanni</td>
+<td>06823185060</td>
+<td>Calvi Giovanni</td>
+</tr>
+<tr><td>11</td>
+<td>Poggi</td>
+<td>Giuseppe</td>
+<td>99662979029</td>
+<td>Poggi Giuseppe</td>
+</tr>
+<tr><td>12</td>
+<td>Curti</td>
+<td>Oreste</td>
+<td>65103095977</td>
+<td>Curti Oreste</td>
+</tr>
+<tr><td>13</td>
+<td>Borsotti</td>
+<td>Mirella</td>
+<td>73937710258</td>
+<td>Borsotti Mirella</td>
+</tr>
+<tr><td>14</td>
+<td>Franchinotti</td>
+<td>Anna</td>
+<td>26385034663</td>
+<td>Franchinotti Anna</td>
+</tr>
+<tr><td>15</td>
+<td>Pischedda</td>
+<td>Giovanni</td>
+<td>23072860054</td>
+<td>Pischedda Giovanni</td>
+</tr>
+<tr><td>16</td>
+<td>Maini</td>
+<td>Marilena</td>
+<td>67585343193</td>
+<td>Maini Marilena</td>
+</tr>
+<tr><td>17</td>
+<td>Boscati</td>
+<td>Andrea</td>
+<td>72166961654</td>
+<td>Boscati Andrea</td>
+</tr>
+<tr><td>18</td>
+<td>Bazzotti</td>
+<td>Pietro</td>
+<td>25088651685</td>
+<td>Bazzotti Pietro</td>
+</tr>
+<tr><td>19</td>
+<td>Scicchitano</td>
+<td>Pierluigi</td>
+<td>54549230481</td>
+<td>Scicchitano Pierluigi</td>
+</tr>
+<tr><td>20</td>
+<td>Dionisio</td>
+<td>Fiorenzo</td>
+<td>92622683327</td>
+<td>Dionisio Fiorenzo</td>
+</tr>
+<tr><td>21</td>
+<td>Traina</td>
+<td>Giovanni</td>
+<td>12803695242</td>
+<td>Traina Giovanni</td>
+</tr>
+<tr><td>22</td>
+<td>Giordano</td>
+<td>Francesco</td>
+<td>12803695242</td>
+<td>Giordano Francesco</td>
+</tr>
+</table>
+<p>Queste qui sopra sono le tabelle provenienti dai vari fogli di Excel</p>
+<ul>
+  <li>Dal foglio1 preleviamo la tabella con l'elenco delle immagini</li>
+  <li>Dal foglio2 preleviamo la tabella degli articoli</li>
+  <li>Dal foglio3 preleviamo la tabella dei contatti</li>
+</ul>
+</div></body>
+</html>
+
